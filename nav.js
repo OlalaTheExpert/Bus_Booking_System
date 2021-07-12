@@ -50,9 +50,10 @@ function confirmdetails() {
     paymethod = $("#paymentmethod").val();
     //ticketname
     fullname = $("#fullname").val();
+    bus = $("#bus_id").val();
     //
 
-    $("#details").html("<ul><li>TICKET OWNER: " + fullname + "</li><li>DESTINATION: " + destination + "</li><li>DATE OF TRAVEL: " + traveldate + "</li><li>TRAVEL CLASS: " + travelclass + "</li><li>NUMBER OF SEATS: " + seats + "</li><li>AMOUNT PAYING: " + amount + " Via " + paymethod + " Transaction ID: " + code + "</li></ul>");
+    $("#details").html("<ul><li>TICKET OWNER: " + fullname + "</li><li>DESTINATION: " + destination + "</li><li>DATE OF TRAVEL: " + traveldate + "</li><li>TRAVEL CLASS: " + travelclass + "</li><li>NUMBER OF SEATS: " + seats + "</li><li>AMOUNT PAYING: " + amount + " Via " + paymethod + " Transaction ID: " + code + "</li> <li>BUS: " + bus + "</li></ul>");
 
     $("#confirmdetails-page").fadeIn("slow");
     return false;
@@ -75,6 +76,7 @@ function senddata() {
     amount = $("#amount").val();
     code = $("#codebox").val();
     paymethod = $("#paymentmethod").val();
+    bus = $("#bus_id").val();
 
     //Clearing all data 
     $("#dynamic").html("<div class='ui text container'><div id='err001' class='ui success icon message'><i class='notched circle loading icon'></i><div class='content'><div class='header'>Please wait....</div><p>We are doing everything for you</p></div></div>");
@@ -83,7 +85,7 @@ function senddata() {
     $.ajax({
         url: "request.php",
         type: "POST",
-        data: "d=" + destination + "&tc=" + travelclass + "&s=" + seats + "&td=" + traveldate + "&f=" + fullname + "&c=" + contact + "&g=" + gender + "&a=" + amount + "&code=" + code + "&p=" + paymethod,
+        data: "d=" + destination + "&tc=" + travelclass + "&s=" + seats + "&td=" + traveldate + "&f=" + fullname + "&c=" + contact + "&g=" + gender + "&a=" + amount + "&code=" + code + "&p=" + paymethod + "&bus=" + bus,
         success: function(data) {
             if (data == 'success') {
                 setTimeout(function() { $("#dynamic").html("<div class='ui text container'><div class='ui positive message'> Success! Your tickets are ready. Incase you misplaced your ticket, you can <a>reprint</a> it anytime. <p align='center'><a class='ui button green' href='validate.php?ticket'> Download ticket.</a></p></div></div>"); }, 6000);
