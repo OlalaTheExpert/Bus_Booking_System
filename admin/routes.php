@@ -355,7 +355,7 @@
 							 if (isset($_POST['submit'])){
 							
 							// Create connection
-							$con = mysqli_connect("localhost","root","","booking_db") or die(mysqli_error($con));
+							$con = mysqli_connect("localhost","root","","booking_db") or die(mysql_error());
 							//$x = "SELECT * FROM addtrain WHERE seat";
 							
 							$y = "SELECT COUNT(*) FROM addtrain As booked";
